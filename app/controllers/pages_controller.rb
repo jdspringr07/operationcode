@@ -23,7 +23,8 @@ class PagesController < ApplicationController
   def events
   end
 
-  def faqs
+  def faq
+    @faqs = YAML.load_file(Rails.root + 'config/faqs.yml')
   end
 
   def founder
@@ -32,7 +33,7 @@ class PagesController < ApplicationController
   def hackathons
   end
 
-  def hello
+  def jgguide
   end
 
   def media
@@ -50,6 +51,9 @@ class PagesController < ApplicationController
   def online
   end
 
+  def pipeline
+  end
+
   def press
   end
 
@@ -65,9 +69,13 @@ class PagesController < ApplicationController
   def staff
   end
 
-  def successes
+  def success_stories
   end
 
-  def team
+  def fellowships
+  end
+
+  def ssl
+    render text: LetsEncrypt.key_for(params[:token])
   end
 end
